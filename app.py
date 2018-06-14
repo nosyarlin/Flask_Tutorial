@@ -9,10 +9,11 @@ from resources.users import UserRegister
 from resources.items import Item, ItemList
 from resources.stores import Store, StoreList
 
-
 app = Flask(__name__)
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
+app.config['PROPAGATE_EXCEPTIONS'] = True  # allow extensions to pass status codes
 app.secret_key = "secret_key"
 api = Api(app)
 
